@@ -9,10 +9,11 @@ const jokes = [
 ];
 
 const ratings = [
-  { score: 1 },
+  { score: 4 },
   { score: 3 },
-  { score: 4 }
+  { score: 1 }
 ];
+
 
 client.query(`
   INSERT INTO profiles (username, hash)
@@ -24,27 +25,28 @@ client.query(`
   .then(result => {
     const profile = result.rows[0];
 
-
     return Promise.all(
-      jokes.map(jokes => {
+      jokes.map(joke => {
         return client.query(`
-        INSERT INTO goals (title, profiles_id)
-        VALUES ($1, $2)
+        INSERT INTO jokes (title, source, profile_id)
+        VALUES ($1, $2, $3)
+        RETURNING *
       `,
-        [jokes.title, profile.id]);
+        [joke.title, joke.source, profile.id]);
       })
     );
   })
   .then(result => {
-    const profile = result.rows[0];
+    // console.log('result is ', result[0].rows[0]);
+    const joke = result[0].rows[0];
 
     return Promise.all(
       ratings.map(rating => {
         return client.query(`
-        INSERT INTO ratings (score, jokes_id, profiles_id)
+        INSERT INTO ratings (score, joke_id, profile_id)
         VALUES ($1, $2, $3)
       `,
-        [rating.score, jokes.id, profile.id]);
+        [rating.score, joke.id, joke.profile_id]);
       })
     );
   })
