@@ -11,13 +11,13 @@ client.query(`
     id SERIAL PRIMARY KEY,
     title VARCHAR(1024) NOT NULL,
     source VARCHAR(256) NOT NULL,
-    profile_id INTEGER NOT NULL REFERENCES profiles(id)
+    profile_id INTEGER NOT NULL REFERENCES profiles(id) 
   );
   CREATE TABLE IF NOT EXISTS ratings (
     id SERIAL PRIMARY KEY,
     score INTEGER, 
-    joke_id INTEGER NOT NULL REFERENCES jokes(id),
-    profile_id INTEGER NOT NULL REFERENCES profiles(id)
+    joke_id INTEGER NOT NULL REFERENCES jokes(id) on DELETE cascade,
+    profile_id INTEGER NOT NULL REFERENCES profiles(id) 
   );
 `)
   .then(

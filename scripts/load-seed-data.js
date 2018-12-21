@@ -3,9 +3,8 @@ const client = require('../lib/db-client');
 const bcrypt = require('bcryptjs');
 
 const jokes = [
-  { title: 'What to you get when you cross the Atlantic with the Titanic? About half way', source:'found with search' },
-  { title: 'What did one wall say to the other wall? Lets meet at the corner', source:'found with search' },
-  { title: 'Why did Cleopatra fall off the swing? Because she is dead', source: 'your creation' }
+  { title: 'What did one wall say to the other wall? Lets meet at the corner', source:'found with search', profile_id: 1 },
+  { title: 'Why did Cleopatra fall off the swing? Because she is dead', source: 'your creation', profile_id: 1 }
 ];
 
 const ratings = [
