@@ -9,7 +9,7 @@ client.query(`
   );
   CREATE TABLE IF NOT EXISTS jokes (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(256) NOT NULL,
+    title VARCHAR(1024) NOT NULL,
     source VARCHAR(256) NOT NULL,
     profile_id INTEGER NOT NULL REFERENCES profiles(id)
   );
