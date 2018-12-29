@@ -33,8 +33,7 @@
     "nodemon": "^1.18.8",
     "pg": "^7.7.1",
     "scripts": "^0.1.0",
-    "superagent": "^4.0.0",
-    "vue-star-rating": "^1.6.1"
+    "superagent": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^5.10.0"
